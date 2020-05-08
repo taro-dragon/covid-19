@@ -1,14 +1,17 @@
 import React,{useEffect, useState} from 'react'
 import {useDispatch,useSelector} from 'react-redux'
 
+// import actions
 import {fetchData} from '../../actions'
 
+// import components
 import Select from '../../components/Select/Select'
 import Row from '../../components/Layout/Block/Block'
 import Card from '../../components/Card/Card'
 import Text from '../../components/Text/Text'
 import Loader from '../../components/Loader/Loader'
 
+// import constants
 import Color from '../../constants/color'
 import Countries from '../../constants/countries'
 
@@ -22,23 +25,15 @@ const Dashboard = () => {
 
     const dispatch = useDispatch();
     const dashboard = useSelector(dashboardSelecter)
-    const {loading, data, error} = dashboard
+    const {loading, data } = dashboard
     
     useEffect(()=>{
-        const fetch = async () => {
-            try{
-                dispatch(fetchData())
-            } catch(error){
-                console.warn(error)
-            }    
-            console.log(data)
-        }
-        fetch()
+        dispatch(fetchData()) 
     },[])
 
     const renderOption = () => {
         if(data){
-            const options = data.Countries.map((option,i)=>{
+            const options = data.Countries.map((option,i) => {
                 const countryJp = Countries.filter(area => area.alpha2 === option.CountryCode)
                 if(countryJp[0]){
                     return (
@@ -46,6 +41,8 @@ const Dashboard = () => {
                             {countryJp[0].companyjp}
                         </option>
                     )
+                } else {
+                    return null
                 }
             })
             return options

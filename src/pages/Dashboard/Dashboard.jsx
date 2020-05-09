@@ -22,7 +22,7 @@ const Dashboard = () => {
 
     const [country, setCountry] = useState('Global')
     const [display, setDisplay] = useState(null)
-
+    const [firstRender, setFirstRender] = useState(false)
     const dispatch = useDispatch();
     const dashboard = useSelector(dashboardSelecter)
     const {loading, data } = dashboard
@@ -30,6 +30,13 @@ const Dashboard = () => {
     useEffect(()=>{
         dispatch(fetchData()) 
     },[])
+
+    // 初回レンダリング時にstateをセットする
+    if(data && !firstRender){
+        setCountry('Global')
+        setDisplay(data.Global)
+        setFirstRender(true)
+    }
 
     const renderOption = () => {
         if(data){
@@ -128,7 +135,6 @@ const Dashboard = () => {
             }
         </Row>
     )
-
 }
 
 export default Dashboard

@@ -1,7 +1,29 @@
 import React from 'react'
 import {BlockCp} from './Block.style.js'
 
-const Block = ({children, mt, mb, mr, ml, my, mx ,pt, pb, pr, pl, px, py, direction, align, justify, wrap, maxWidth}) => {
+const Block = ({ 
+     children,
+     mt, 
+     mb, 
+     mr, 
+     ml, 
+     my, 
+     mx, 
+     pt, 
+     pb, 
+     pr, 
+     pl, 
+     px, 
+     py, 
+     direction, 
+     align, 
+     justify, 
+     wrap, 
+     maxWidth, 
+     bgColor, 
+     radius,
+     width
+    }) => {
     return(
         <BlockCp 
             mt={mt}
@@ -21,6 +43,9 @@ const Block = ({children, mt, mb, mr, ml, my, mx ,pt, pb, pr, pl, px, py, direct
             justify={justify}
             wrap={wrap}
             maxWidth={maxWidth}
+            bgColor={bgColor}
+            radius={radius}
+            width={width}
         >
             {children}
         </BlockCp>

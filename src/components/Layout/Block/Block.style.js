@@ -15,6 +15,8 @@ export const BlockCp = styled.div`
     justify-content: ${props => props.justify ? props.justify : 'normal'};
     flex-wrap: ${props => props.wrap ? props.wrap : 'normal'};
     max-width: ${props => props.maxWidth};
-    width: 100%;
+    width: ${props => props.width ? props.width : 'auto'};
     box-sizing: border-box;
+    background: ${props => props.bgColor ? props.bgColor: 'transparent'};
+    border-radius: ${props => props.radius ? props.radius : '0px'};
 `

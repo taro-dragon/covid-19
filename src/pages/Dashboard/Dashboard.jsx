@@ -68,67 +68,74 @@ const Dashboard = () => {
     }
 
 　   return(
-        <Row py={'50px'} px={'40px'} direction={'column'}>
+        <Row py={'50px'} px={'40px'} wrap={'wrap'} justify={'space-between'} direction={'row'}>
             {loading ? (
-                <Loader/>
+                <Row justify={'center'} align={'center'} width={'100%'}>
+                    <Loader/>
+                </Row>
                 ) : (
                     <>
-                    <Row　mb={'32px'}>
-                        <Text type={'title'} color={Color.primary}>
-                            最新情報
-                        </Text>
+                    <Row direction={'column'} maxWidth={'760px'}>
+                        <Row　mb={'32px'}>
+                            <Text type={'title'} color={Color.primary}>
+                                最新情報
+                            </Text>
+                        </Row>
+                        <Row>
+                            <Select value={country} onChange={handleSelect}>
+                                <option value={'Global'}>全世界</option>
+                                {renderOption()}
+                            </Select>
+                        </Row>
+                        <Row mt={'80px'} justify={'space-between'} maxWidth={'740px'}>
+                            <Card width={'200px'} py={'16px'} px={'16px'} bgcolor={Color.primary}>
+                                <Row mb={'24px'}>
+                                    <Text type={'text'} color={Color.white}>
+                                        総感染者数
+                                    </Text>
+                                </Row>
+                                <Row mb={'32px'}>
+                                    <Text type={'main'} color={Color.white}>
+                                        {display ? display.TotalConfirmed : 'データを取得しています'}
+                                        <Text type={'span'} color={Color.white}>人</Text>
+                                    </Text>
+                                </Row>
+                            </Card>
+                                <Card width={'200px'} py={'16px'} px={'16px'} mx={'20px'} bgcolor={Color.secondary}>
+                                <Row mb={'24px'}>
+                                    <Text type={'text'} color={Color.white}>
+                                        総死者数
+                                    </Text>
+                                </Row>
+                                <Row mb={'32px'}>
+                                    <Text type={'main'} color={Color.white}>
+                                        {display ? display.TotalDeaths : 'データを取得しています'}
+                                        <Text type={'span'} color={Color.white}>人</Text>
+                                    </Text>
+                                </Row>
+                            </Card>
+                            <Card width={'200px'} py={'16px'} px={'16px'} bgcolor={Color.tarnary}>
+                                <Row mb={'24px'}>
+                                    <Text type={'text'} color={Color.white}>
+                                        総完治者数
+                                    </Text>
+                                </Row>
+                                <Row mb={'32px'}>
+                                    <Text type={'main'} color={Color.white}>
+                                        {display ? display.TotalRecovered : 'データを取得しています'}
+                                        <Text type={'span'} color={Color.white}>人</Text>
+                                    </Text>
+                                </Row>
+                            </Card>
+                        </Row>
+                        <Row mt={'40px'}>
+                            <Text type={'desc'} color={Color.primary}>
+                                    最終更新日：{display ? country === 'Global' ? data.Date : display.Date : 'データを取得しています'}
+                            </Text>
+                        </Row>
                     </Row>
-                    <Row>
-                        <Select value={country} onChange={handleSelect}>
-                            <option value={'Global'}>全世界</option>
-                            {renderOption()}
-                        </Select>
-                    </Row>
-                    <Row mt={'80px'} justify={'space-between'} maxWidth={'740px'}>
-                        <Card width={'200px'} py={'16px'} px={'16px'} bgcolor={Color.primary}>
-                            <Row mb={'24px'}>
-                                <Text type={'text'} color={Color.white}>
-                                    総感染者数
-                                </Text>
-                            </Row>
-                            <Row mb={'32px'}>
-                                <Text type={'main'} color={Color.white}>
-                                    {display ? display.TotalConfirmed : 'データを取得しています'}
-                                    <Text type={'span'} color={Color.white}>人</Text>
-                                </Text>
-                            </Row>
-                        </Card>
-                        <Card width={'200px'} py={'16px'} px={'16px'} bgcolor={Color.secondary}>
-                            <Row mb={'24px'}>
-                                <Text type={'text'} color={Color.white}>
-                                    総死者数
-                                </Text>
-                            </Row>
-                            <Row mb={'32px'}>
-                                <Text type={'main'} color={Color.white}>
-                                    {display ? display.TotalDeaths : 'データを取得しています'}
-                                    <Text type={'span'} color={Color.white}>人</Text>
-                                </Text>
-                            </Row>
-                        </Card>
-                        <Card width={'200px'} py={'16px'} px={'16px'} bgcolor={Color.tarnary}>
-                            <Row mb={'24px'}>
-                                <Text type={'text'} color={Color.white}>
-                                    総完治者数
-                                </Text>
-                            </Row>
-                            <Row mb={'32px'}>
-                                <Text type={'main'} color={Color.white}>
-                                    {display ? display.TotalRecovered : 'データを取得しています'}
-                                    <Text type={'span'} color={Color.white}>人</Text>
-                                </Text>
-                            </Row>
-                        </Card>
-                    </Row>
-                    <Row mt={'40px'}>
-                        <Text type={'desc'} color={Color.primary}>
-                                最終更新日：{display ? country === 'Global' ? data.Date : display.Date : 'データを取得しています'}
-                        </Text>
+                    <Row maxWidth={'300px'} bgColor={Color.background} radius={'12px'}>
+                        
                     </Row>
                     </>
                 )

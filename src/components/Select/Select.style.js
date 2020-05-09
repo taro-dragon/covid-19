@@ -6,7 +6,7 @@ export const SelectCp = styled.select`
     -moz-appearance: none;
     appearance: none;
     box-sizing: border-box;
-    padding: 6px 12px;
+    padding: 6px 36px 6px 12px;
     border-radius: 16px;
     color: ${Color.primary};
     font-size: 16px;
@@ -14,5 +14,6 @@ export const SelectCp = styled.select`
     border: none;
     box-shadow: 0px 3px 6px ${Color.tarnary}50;
     background-color: ${Color.white};
+    position: relative;
     :focus { outline: none; }
 `
